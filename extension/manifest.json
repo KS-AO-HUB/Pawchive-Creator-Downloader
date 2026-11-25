@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Pawchive Creator Downloader",
+  "short_name": "Creator Downloader",
+  "version": "1.0.0",
+  "description": "Adds a Download all button to Pawchive creator pages that saves every file from every post into tidy folders.",
+  "icons": {
+    "48": "images/48.png",
+    "128": "images/128.png"
+  },
+  "permissions": ["downloads", "storage"],
+  "background": {
+    "service_worker": "background.js",
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://pawchive.pw/*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "pawchive-creator-downloader@extension",
+      "strict_min_version": "128.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  }
+}
